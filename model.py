@@ -92,8 +92,30 @@ def rand(shape, seed=None):
     rnd_arr = rng.random(shape).astype(np.float32)
     return LazyBuffer(rnd_arr)
 
-# Step 7 - lazybuffer_unary_e (not yet solved)
-# TODO: implement
+# Step 7 - lazybuffer_unary_e
+import numpy as np
+
+
+def e(self, op):
+    x = self._np
+    if op.name == "NEG":
+        x = -x
+    elif op.name == "RELU":
+        x = np.maximum(0, x)
+    elif op.name == "LOG":
+        x = np.log(x, dtype=self.dtype)
+    elif op.name == "EXP":
+        x = np.exp(x, dtype=self.dtype)
+    elif op.name == "SQRT":
+        x = np.sqrt(x, dtype=self.dtype)
+    elif op.name == "SIGMOID":
+        x = 1 / (1 + np.exp(-x, dtype=self.dtype))
+    else:
+        raise ValueError("Unknown ops.")
+    
+    return LazyBuffer(x)
+
+LazyBuffer.e = e
 
 # Step 8 - lazybuffer_binary_e (not yet solved)
 # TODO: implement
