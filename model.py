@@ -24,8 +24,10 @@ def prod(shape):
     n = [n := n * i for i in shape]
     return n[-1]
 
-# Step 2 - argsort (not yet solved)
-# TODO: implement
+# Step 2 - argsort
+def argsort(values):
+    # TODO: Return the indices that would sort values in ascending order.
+    return sorted(range(len(values)), key=lambda i: values[i])
 
 # Step 3 - make_op_enums (not yet solved)
 # TODO: implement
