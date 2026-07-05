@@ -29,8 +29,36 @@ def argsort(values):
     # TODO: Return the indices that would sort values in ascending order.
     return sorted(range(len(values)), key=lambda i: values[i])
 
-# Step 3 - make_op_enums (not yet solved)
-# TODO: implement
+# Step 3 - make_op_enums
+from enum import Enum
+
+class Unary(Enum):
+    NEG = 1
+    RELU = 2
+    LOG = 3
+    EXP = 4
+    SQRT = 5
+    SIGMOID = 6
+
+class Binary(Enum):
+    ADD = 1
+    SUB = 2
+    MUL = 3
+    DIV = 4
+    CMPLT = 5
+    MAX = 6
+
+class Reduce(Enum):
+    SUM = 1
+    MAX = 2
+
+class Movement(Enum):
+    RESHAPE = 1
+    EXPAND = 2
+    PERMUTE = 3
+
+def make_op_enums():
+    return Unary, Binary, Reduce, Movement
 
 # Step 4 - LazyBuffer (not yet solved)
 # TODO: implement
