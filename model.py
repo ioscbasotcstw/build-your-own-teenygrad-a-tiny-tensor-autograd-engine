@@ -117,8 +117,27 @@ def e(self, op):
 
 LazyBuffer.e = e
 
-# Step 8 - lazybuffer_binary_e (not yet solved)
-# TODO: implement
+# Step 8 - lazybuffer_binary_e
+def lazybuffer_binary_e(self, op, other):
+    a = self._np
+    b = other._np 
+
+    if op.name == "ADD":
+        a = a + b 
+    elif op.name == "SUB":
+        a = a - b 
+    elif op.name == "MUL":
+        a = a * b 
+    elif op.name == "DIV":
+        a = a / b 
+    elif op.name == "CMPLT":
+        a = np.where(a < b, 1, 0).astype(a.dtype)
+    elif op.name == "MAX":
+        a = np.maximum(a, b).astype(a.dtype)
+    else:
+         raise ValueError("Unknown ops.")
+    
+    return LazyBuffer(a)
 
 # Step 9 - lazybuffer_r (not yet solved)
 # TODO: implement
