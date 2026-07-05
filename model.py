@@ -75,8 +75,14 @@ class LazyBuffer:
     def __float__(self):
         return float(self._np)
 
-# Step 5 - lazybuffer_const (not yet solved)
-# TODO: implement
+# Step 5 - lazybuffer_const
+import numpy as np
+
+def const(value, shape):
+    np_array = np.full(shape, value, dtype=np.float32)
+    return LazyBuffer(np_array)
+
+LazyBuffer.const = staticmethod(const)
 
 # Step 6 - rand (not yet solved)
 # TODO: implement
