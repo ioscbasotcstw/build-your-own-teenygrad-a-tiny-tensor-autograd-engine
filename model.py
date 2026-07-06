@@ -159,8 +159,17 @@ def reshape(self, new_shape):
     out = a.reshape(new_shape)
     return LazyBuffer(out)
 
-# Step 11 - lazybuffer_expand (not yet solved)
-# TODO: implement
+# Step 11 - lazybuffer_expand
+def expand(self, new_shape):
+    # TODO: broadcast this buffer's size-1 dims out to new_shape
+    normilized_shape = (int(d) for d in new_shape)
+    a = self._np 
+    try:
+        views = np.broadcast_to(a, normilized_shape)
+        out = np.array(views, dtype=a.dtype)
+        return LazyBuffer(out)
+    except:
+        raise ValueError("Shapes are incompatible.")
 
 # Step 12 - lazybuffer_permute (not yet solved)
 # TODO: implement
