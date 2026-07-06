@@ -171,8 +171,15 @@ def expand(self, new_shape):
     except:
         raise ValueError("Shapes are incompatible.")
 
-# Step 12 - lazybuffer_permute (not yet solved)
-# TODO: implement
+# Step 12 - lazybuffer_permute
+def permute(self, order):
+    # TODO: return a new LazyBuffer with axes reordered according to order
+    a = self._np 
+    try:
+        out = np.transpose(a, order)
+        return LazyBuffer(out)
+    except Exception as e:
+        raise ValueError(f"Error happened while transpose op: {e}")
 
 # Step 13 - Function (not yet solved)
 # TODO: implement
