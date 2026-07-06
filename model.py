@@ -139,8 +139,18 @@ def lazybuffer_binary_e(self, op, other):
     
     return LazyBuffer(a)
 
-# Step 9 - lazybuffer_r (not yet solved)
-# TODO: implement
+# Step 9 - lazybuffer_r
+def r(self, op, axis):
+    a = self._np
+    name = getattr(op, 'name', None)
+    if name == "SUM":
+        out = np.sum(a, axis, keepdims=True)
+    elif name == "MAX":
+        out = np.max(a, axis, keepdims=True)
+    else:
+        raise ValueError("Unknown ops.")
+
+    return LazyBuffer(out)
 
 # Step 10 - lazybuffer_reshape (not yet solved)
 # TODO: implement
